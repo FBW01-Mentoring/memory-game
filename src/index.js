@@ -23,20 +23,20 @@ var numPairs = 0;
 // this function creates deck of cards that returns an object of cards
 // to the caller
 function createDeck() {
-  var rows = constants.getRows();
-  var cols = constants.getColumns();
-  var key = createRandom();
-  var deck = {};
+  const rows = constants.getRows();
+  const cols = constants.getColumns();
+  const key = createRandom();
+  const deck = {};
   deck.rows = [];
 
   // create each row
-  for (var i = 0; i < rows; i++) {
-    var row = {};
+  for (let i = 0; i < rows; i++) {
+    const row = {};
     row.cards = [];
 
     // creat each card in the row
-    for (var j = 0; j < cols; j++) {
-      var card = {};
+    for (let j = 0; j < cols; j++) {
+      const card = {};
       card.isFaceUp = false;
       card.item = key.pop();
       row.cards.push(card);
@@ -58,9 +58,9 @@ function insertByIndex(arr, index, item) {
 // creates a random array of items that contain matches
 // for example: [1, 5, 6, 5, 1, 6]
 function createRandom() {
-  var matches = constants.getNumMatches();
-  var pool = [];
-  var answers = [];
+  const matches = constants.getNumMatches();
+  const pool = [];
+  const answers = [];
   const hiragana = [
     "A",
     "B",
@@ -89,79 +89,6 @@ function createRandom() {
     "Z",
   ];
 
-  //   const hiragana = [
-  //     "あ",
-  //     "い",
-  //     "う",
-  //     "え",
-  //     "お",
-  //     "か",
-  //     "が",
-  //     "き",
-  //     "ぎ",
-  //     "く",
-  //     "ぐ",
-  //     "け",
-  //     "げ",
-  //     "こ",
-  //     "ご",
-  //     "さ",
-  //     "ざ",
-  //     "し",
-  //     "じ",
-  //     "す",
-  //     "ず",
-  //     "せ",
-  //     "ぜ",
-  //     "そ",
-  //     "ぞ",
-  //     "た",
-  //     "だ",
-  //     "ち",
-  //     "ぢ",
-  //     "つ",
-  //     "づ",
-  //     "て",
-  //     "で",
-  //     "と",
-  //     "ど",
-  //     "な",
-  //     "に",
-  //     "ぬ",
-  //     "ね",
-  //     "の",
-  //     "は",
-  //     "ば",
-  //     "ぱ",
-  //     "ひ",
-  //     "び",
-  //     "ぴ",
-  //     "ふ",
-  //     "ぶ",
-  //     "ぷ",
-  //     "へ",
-  //     "べ",
-  //     "ぺ",
-  //     "ほ",
-  //     "ぼ",
-  //     "ぽ",
-  //     "ま",
-  //     "み",
-  //     "む",
-  //     "め",
-  //     "も",
-  //     "や",
-  //     "ゆ",
-  //     "よ",
-  //     "ら",
-  //     "り",
-  //     "る",
-  //     "れ",
-  //     "ろ",
-  //     "わ",
-  //     "を",
-  //     "ん",
-  //   ];
   // set what kind of item to display
   let items = hiragana;
 
@@ -171,14 +98,14 @@ function createRandom() {
   }
 
   // generate an array with the random items
-  for (var n = 0; n < matches; n++) {
+  for (let n = 0; n < matches; n++) {
     // grab random letter from array and remove that letter from the
     // original array
-    var randLetter = Math.floor(Math.random() * items.length);
-    var letter = items[randLetter];
+    const randLetter = Math.floor(Math.random() * items.length);
+    const letter = items[randLetter];
     removeByIndex(items, randLetter);
     // generate two random placements for each item
-    var randPool = Math.floor(Math.random() * pool.length);
+    const randPool = Math.floor(Math.random() * pool.length);
 
     // remove the placeholder from answers and insert the letter into
     // random slot
@@ -197,7 +124,7 @@ function createRandom() {
   return answers;
 }
 
-var app = angular.module("cards", ["ngAnimate"]);
+const app = angular.module("cards", ["ngAnimate"]);
 
 app.controller("CardController", function ($scope, $timeout) {
   $scope.deck = createDeck();
@@ -244,7 +171,7 @@ app.controller("CardController", function ($scope, $timeout) {
   $scope.timeLimit = 60000;
   $scope.isCritical = false;
 
-  var timer = null;
+  const timer = null;
 
   // start the timer as soon as the player presses start
   $scope.start = function () {
