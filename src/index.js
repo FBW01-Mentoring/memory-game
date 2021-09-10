@@ -61,7 +61,7 @@ function createRandom() {
   var matches = constants.getNumMatches();
   var pool = [];
   var answers = [];
-  var letters = [
+  var hiragana = [
     "A",
     "B",
     "C",
